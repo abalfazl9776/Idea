@@ -1,4 +1,5 @@
-﻿using DataAccess.Entities;
+﻿using AutoMapper;
+using DataAccess.Entities;
 using DataContract.Contracts;
 using DataContract.Models;
 
@@ -7,21 +8,18 @@ namespace DataAccess.Repositories;
 public class IdeaRepository : IIdeaRepository
 {
     private readonly ApplicationDbContext _applicationDbContext;
+    private readonly IMapper _mapper;
 
-    public IdeaRepository(ApplicationDbContext applicationDbContext)
+    public IdeaRepository(ApplicationDbContext applicationDbContext, IMapper mapper)
     {
         _applicationDbContext = applicationDbContext;
+        _mapper = mapper;
     }
 
     public void AddIdea(AddIdeaDto dto)
     {
-        _applicationDbContext.Idea.Add(new Idea()
-        {
-            Description = dto.Idea,
-            Title = dto.Title,
-            DateTime = dto.DateTime,
-            UserId = dto.UserId
-        });
+        var idea = _mapper.Map<Idea>(dto);
+        _applicationDbContext.Idea.Add(idea);
         _applicationDbContext.SaveChanges();
     }
 
