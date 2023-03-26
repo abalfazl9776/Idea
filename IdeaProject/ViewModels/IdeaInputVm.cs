@@ -1,4 +1,5 @@
 ﻿namespace IdeaProject.ViewModels;
+using FluentValidation;
 
 public class IdeaInputVm
 {
