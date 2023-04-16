@@ -17,6 +17,12 @@ namespace IdeaProject.Configurations
             CreateMap<AddIdeaDto, Idea>()
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Idea))
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
+            CreateMap<IdeaInputVm, UpdateIdeaInputDto>().ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Idea)); 
+            CreateMap<UpdateIdeaInputDto, UpdateIdeaDto>();
+            CreateMap<UpdateIdeaDto, Idea>();
+            CreateMap< IdeasDTO , IdeaOutputVm> ();
+            CreateMap<GetIdeaDto, IdeasDTO > ();
+            CreateMap< Idea , GetIdeaDto> ().ForMember(dest => dest.MainIdea, opt => opt.MapFrom(src => src.Description ));
         }
     }
 }
