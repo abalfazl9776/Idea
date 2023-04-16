@@ -51,18 +51,42 @@ public class IdeaController : ControllerBase
         return Ok();
     }
     [HttpGet("id:int")]
-    public async Task<ActionResult>GetAllIdeas(int id,IdeaOutputVm ideaOutputVm)
+    public ActionResult GetIdeaById(int id)
     {
-       
-       var ideasDto = _mapper.Map<IdeasDTO>(ideaOutputVm);
-       ideasDto.UserId = id;
-       return Ok(ideasDto);
+        var getIdea = _ideaService.GetById(id);
+        var idea = _mapper.Map<IdeasDTO>(getIdea);
+        if (idea == null)
+        {
+            return NotFound("Invalid ID");
+        }
+        return Ok(idea);
     }
+
+    [HttpGet("UserId:int")]
+    public ActionResult GetIdeaByUserID(int userId)
+    {
+        var getIdea = _ideaService.GetById(userId);
+        var idea = _mapper.Map<IdeasDTO>(getIdea);
+        if (idea == null)
+        {
+            return NotFound("Invalid UserID");
+        }
+        return Ok(idea);
+    }
+
     [HttpGet]
     public  List <IdeaOutputVm> GetAll()
     {
         List<IdeasDTO> getIdeas = _ideaService.GetAllIdeas();
         List<IdeaOutputVm> getAllIdeas = _mapper.Map<List<IdeaOutputVm>>(getIdeas);
         return getAllIdeas;
+    }
+
+    [HttpDelete]
+    public ActionResult Delete(int id)
+    {
+        _ideaService.DeleteIdea(id);
+        return Ok();
+        
     }
 }

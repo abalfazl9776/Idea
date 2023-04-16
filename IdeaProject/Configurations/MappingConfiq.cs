@@ -23,6 +23,9 @@ namespace IdeaProject.Configurations
             CreateMap< IdeasDTO , IdeaOutputVm> ();
             CreateMap<GetIdeaDto, IdeasDTO > ();
             CreateMap< Idea , GetIdeaDto> ().ForMember(dest => dest.MainIdea, opt => opt.MapFrom(src => src.Description ));
+            CreateMap<IdeaDeleteVm, DeleteDto> ();
+            CreateMap<DeleteDto, DeleteIdeaDto> ();
+            CreateMap<DeleteIdeaDto, Idea>();
         }
     }
 }

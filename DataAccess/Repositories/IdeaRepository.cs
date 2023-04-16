@@ -30,6 +30,17 @@ public class IdeaRepository : IIdeaRepository
         _applicationDbContext.SaveChanges();
     }
 
+    public void DeleteIdea(int id)
+    {
+        var idea = _applicationDbContext.Idea.FirstOrDefault(x=>x.Id==id);
+        if(idea==null) 
+        {
+            throw new Exception("Not Found");
+        }
+        _applicationDbContext.Idea.Remove(idea);
+        _applicationDbContext.SaveChanges();
+    }
+
     public List <GetIdeaDto> GetAllIdeas()
     {
         List<Idea> idea = _applicationDbContext.Idea.ToList();
@@ -38,47 +49,20 @@ public class IdeaRepository : IIdeaRepository
 
     }
 
-    //public GetIdeaDto GetById(int id)
-    //{
-    //    try
-    //    {
-    //        if (id != null)
-    //        {
-    //            var idea = _applicationDbContext.Idea.FirstOrDefault(x => x.Id == id);
-    //            if (idea != null) return idea;
-    //            else return null;
-    //        }
-    //        else
-    //        {
-    //            return null;
-    //        }
-    //    }
-    //    catch (Exception)
-    //    {
-    //        throw;
-    //    }
-    //}
+    public GetIdeaDto GetById(int id)
+    {
+        var idea  = _applicationDbContext.Idea.FirstOrDefault(x=>x.Id==id);
+        var getIdea = _mapper.Map<GetIdeaDto>(idea);
+        return getIdea;
+    }
 
-    //public GetIdeaDto GetByUserId(int userId)
-    //{
-    //    try
-    //    {
-    //        if (userId != null)
-    //        {
-    //            var idea = _applicationDbContext.Idea.FirstOrDefault(x => x.UserId == userId);
-    //            if (idea != null) return idea;
-    //            else return null;
-    //        }
-    //        else
-    //        {
-    //            return null;
-    //        }
-    //    }
-    //    catch (Exception)
-    //    {
-    //        throw;
-    //    }
-    //}
+    public GetIdeaDto GetByUserId(int userId)
+    {
+        var idea = _applicationDbContext.Idea.FirstOrDefault(x => x.UserId == userId);
+        var getIdea = _mapper.Map<GetIdeaDto>(idea);
+        return getIdea;
+    }
+
 
     public void UpdateIdea(UpdateIdeaDto uDto)
     {

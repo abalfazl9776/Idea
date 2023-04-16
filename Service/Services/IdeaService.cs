@@ -12,7 +12,7 @@ public class IdeaService : IIdeaService
     private readonly IIdeaRepository _ideaRepository;
     private readonly IMapper _mapper;
 
-    public IdeaService(IIdeaRepository ideaRepository , IMapper mapper)
+    public IdeaService(IIdeaRepository ideaRepository, IMapper mapper)
     {
         _ideaRepository = ideaRepository;
         _mapper = mapper;
@@ -28,21 +28,31 @@ public class IdeaService : IIdeaService
         var updateIdeaDto = _mapper.Map<UpdateIdeaDto>(inputDto);
         _ideaRepository.UpdateIdea(updateIdeaDto);
     }
-    
-    public List <IdeasDTO> GetAllIdeas()
+
+    public List<IdeasDTO> GetAllIdeas()
     {
         List<GetIdeaDto> getIdea = _ideaRepository.GetAllIdeas();
         List<IdeasDTO> idea = _mapper.Map<List<IdeasDTO>>(getIdea);
         return idea;
     }
 
-    //public IdeasDTO GetById(int id)
-    //{
-    //    throw new NotImplementedException();
-    //}
+    public IdeasDTO GetById(int id)
+    {
+        var getIdea = _ideaRepository.GetById(id);
+        var idea = _mapper.Map<IdeasDTO>(getIdea);
+        return idea;
+    }
 
-    //public IdeasDTO GetByUserId(int userId)
-    //{
-    //    throw new NotImplementedException();
-    
+    public IdeasDTO GetByUserId(int userId)
+    {
+        var getIdea = _ideaRepository.GetById(userId);
+        var idea = _mapper.Map<IdeasDTO>(getIdea);
+        return idea;
+
+    }
+
+    public void DeleteIdea(int id)
+    {
+         _ideaRepository.DeleteIdea(id);
+    }
 }
