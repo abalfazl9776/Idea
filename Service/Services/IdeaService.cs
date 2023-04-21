@@ -55,4 +55,11 @@ public class IdeaService : IIdeaService
     {
          _ideaRepository.DeleteIdea(id);
     }
+
+    public IEnumerable< IdeasDTO> ShowBySearch(string search)
+    {
+        var getIdeaByWord = _ideaRepository.ShowBySearch(search);
+        List<IdeasDTO> idea = _mapper.Map<List<IdeasDTO>>(getIdeaByWord);
+        return idea;
+    }
 }

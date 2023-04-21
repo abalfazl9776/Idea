@@ -9,5 +9,6 @@ public interface IIdeaRepository
     List<GetIdeaDto> GetAllIdeas();
     public GetIdeaDto GetById(int id);
     public GetIdeaDto GetByUserId(int userId);
+    public IEnumerable<GetIdeaDto> ShowBySearch(string searchedWord);
     void DeleteIdea(int id);
 }

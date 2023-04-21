@@ -20,9 +20,9 @@ namespace IdeaProject.Configurations
             CreateMap<IdeaInputVm, UpdateIdeaInputDto>().ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Idea)); 
             CreateMap<UpdateIdeaInputDto, UpdateIdeaDto>();
             CreateMap<UpdateIdeaDto, Idea>();
-            CreateMap< IdeasDTO , IdeaOutputVm> ();
-            CreateMap<GetIdeaDto, IdeasDTO > ();
-            CreateMap< Idea , GetIdeaDto> ().ForMember(dest => dest.MainIdea, opt => opt.MapFrom(src => src.Description ));
+            CreateMap< IdeasDTO , IdeaOutputVm> ().ReverseMap();
+            CreateMap<GetIdeaDto, IdeasDTO > ().ReverseMap();
+            CreateMap< Idea , GetIdeaDto> ().ForMember(dest => dest.MainIdea, opt => opt.MapFrom(src => src.Description )).ReverseMap();
             CreateMap<IdeaDeleteVm, DeleteDto> ();
             CreateMap<DeleteDto, DeleteIdeaDto> ();
             CreateMap<DeleteIdeaDto, Idea>();

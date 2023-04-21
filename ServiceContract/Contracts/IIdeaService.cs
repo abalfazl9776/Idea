@@ -10,4 +10,5 @@ public interface IIdeaService
     public IdeasDTO GetById(int id);
     public IdeasDTO GetByUserId(int userId);
     void DeleteIdea(int id);
+    public IEnumerable< IdeasDTO> ShowBySearch (string search);
 }

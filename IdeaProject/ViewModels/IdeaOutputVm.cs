@@ -7,5 +7,6 @@
         public string MainIdea { get; set; }
 
         public int UserId { get; set; }
+        public List<IdeaOutputVm> Ideas { get; set; }
     }
 }

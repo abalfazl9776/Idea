@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DataAccess.Entities;
 using DataContract.Models;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -66,7 +67,7 @@ public class IdeaController : ControllerBase
     public ActionResult GetIdeaByUserID(int userId)
     {
         var getIdea = _ideaService.GetById(userId);
-        var idea = _mapper.Map<IdeasDTO>(getIdea);
+        var idea = _mapper.Map<IdeaOutputVm>(getIdea);
         if (idea == null)
         {
             return NotFound("Invalid UserID");
@@ -87,6 +88,14 @@ public class IdeaController : ControllerBase
     {
         _ideaService.DeleteIdea(id);
         return Ok();
+    }
+    [HttpGet("SearchBar:string")]
+    public ActionResult OnPostAsync(string searchBar)
+    {
+        var getIdeaByWord = _ideaService.ShowBySearch(searchBar);
+        List<IdeaOutputVm> idea = _mapper.Map<List<IdeaOutputVm>>(getIdeaByWord);
+        return Ok(idea);
         
     }
+   
 }

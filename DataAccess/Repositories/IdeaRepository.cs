@@ -57,12 +57,18 @@ public class IdeaRepository : IIdeaRepository
     }
 
     public GetIdeaDto GetByUserId(int userId)
-    {
+    { 
         var idea = _applicationDbContext.Idea.FirstOrDefault(x => x.UserId == userId);
         var getIdea = _mapper.Map<GetIdeaDto>(idea);
         return getIdea;
     }
 
+    public IEnumerable < GetIdeaDto> ShowBySearch(string searchedWord)
+    {
+        List<Idea> idea = _applicationDbContext.Idea.Where(x => x.Description.Contains(searchedWord) || x.Title.Contains(searchedWord)).ToList();
+        List<GetIdeaDto> getIdeaBySearch = _mapper.Map<List< GetIdeaDto> > (idea);
+        return getIdeaBySearch;
+    }
 
     public void UpdateIdea(UpdateIdeaDto uDto)
     {
@@ -74,4 +80,4 @@ public class IdeaRepository : IIdeaRepository
 
 
 
-}
+} 
