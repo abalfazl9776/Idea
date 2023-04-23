@@ -1,4 +1,4 @@
-﻿namespace IdeaProject.ViewModels
+﻿namespace IdeaProject.ViewModels.Idea
 {
     public class IdeaDeleteVm
     {

@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using DataAccess.Entities;
 using DataAccess.Repositories;
-using DataContract.Models;
-using IdeaProject.ViewModels;
-using ServiceContract.Models;
+using DataContract.Models.Idea;
+using DataContract.Models.User;
+using IdeaProject.ViewModels.Idea;
+using IdeaProject.ViewModels.User;
+using ServiceContract.Models.Idea;
+using ServiceContract.Models.User;
 
 namespace IdeaProject.Configurations
 {
@@ -26,6 +29,11 @@ namespace IdeaProject.Configurations
             CreateMap<IdeaDeleteVm, DeleteDto> ();
             CreateMap<DeleteDto, DeleteIdeaDto> ();
             CreateMap<DeleteIdeaDto, Idea>();
+
+
+            CreateMap<UserInfoInputVm, UserInfoInputDto>();
+            CreateMap<UserInfoInputDto, AddUserDto>().ForMember(dest => dest.DateTime, opt => opt.MapFrom(x => DateTime.Now));
+            CreateMap<AddUserDto, User>();
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using DataContract.Contracts;
-using DataContract.Models;
+using DataContract.Models.Idea;
 using Microsoft.AspNetCore.Mvc;
 using ServiceContract.Contracts;
-using ServiceContract.Models;
+using ServiceContract.Models.Idea;
 
 namespace Service.Services;
 

@@ -3,12 +3,12 @@ using DataAccess.Repositories;
 using DataContract.Contracts;
 using FluentValidation;
 using IdeaProject.Configurations;
-using IdeaProject.ViewModels;
 using Service.Services;
 using ServiceContract.Contracts;
 using FluentValidation.Results;
 using FluentValidation.AspNetCore;
 using System.Reflection;
+using IdeaProject.ViewModels.Idea;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +17,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MappingConfiq));
 builder.Services.AddScoped<IIdeaService, IdeaService>();
 builder.Services.AddScoped<IIdeaRepository, IdeaRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
 builder.Services.AddScoped<IValidator<IdeaInputVm>, IdeaValidator>();
 builder.Services.AddScoped<IIdeaRepository, IdeaRepository>();

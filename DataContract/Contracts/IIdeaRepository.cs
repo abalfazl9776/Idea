@@ -1,4 +1,4 @@
-﻿using DataContract.Models;
+﻿using DataContract.Models.Idea;
 
 namespace DataContract.Contracts;
 

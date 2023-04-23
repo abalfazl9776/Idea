@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceContract.Models
+namespace ServiceContract.Models.User
 {
-    public class IdeasDTO
+    public class DeleteUserDto
     {
-        public string Title { get; set; }
-
-        public string MainIdea { get; set; }
-
         public int UserId { get; set; }
     }
 }

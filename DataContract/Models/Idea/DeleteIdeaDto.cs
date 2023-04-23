@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataContract.Models
+namespace DataContract.Models.Idea
 {
     public class DeleteIdeaDto
     {

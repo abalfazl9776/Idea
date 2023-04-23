@@ -1,14 +1,7 @@
 ﻿using AutoMapper;
 using DataAccess.Entities;
 using DataContract.Contracts;
-using DataContract.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Net.Http.Headers;
-using System.Security.Cryptography.X509Certificates;
+using DataContract.Models.Idea;
 
 namespace DataAccess.Repositories;
 

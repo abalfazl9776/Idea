@@ -1,4 +1,4 @@
-﻿using ServiceContract.Models;
+﻿using ServiceContract.Models.Idea;
 
 namespace ServiceContract.Contracts;
 

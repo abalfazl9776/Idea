@@ -4,11 +4,11 @@ using DataContract.Models;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using FluentValidation.Results;
-using IdeaProject.ViewModels;
+using IdeaProject.ViewModels.Idea;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using ServiceContract.Contracts;
-using ServiceContract.Models;
+using ServiceContract.Models.Idea;
 
 namespace IdeaProject.Controllers;
 

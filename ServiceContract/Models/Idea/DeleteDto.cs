@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataContract.Models
+namespace ServiceContract.Models.Idea
 {
-    public class UpdateIdeaDto
+    public class DeleteDto
     {
         public int Id { get; set; }
-        public string Description { get; set; }
-
-        public string Title { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using IdeaProject.ViewModels;
+using IdeaProject.ViewModels.Idea;
 
 namespace IdeaProject.Configurations
 {

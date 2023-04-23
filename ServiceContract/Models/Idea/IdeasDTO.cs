@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataContract.Models
+namespace ServiceContract.Models.Idea
 {
-    public class GetIdeaDto
+    public class IdeasDTO
     {
-        public string MainIdea { get; set; }
-
         public string Title { get; set; }
+
+        public string MainIdea { get; set; }
 
         public int UserId { get; set; }
     }
