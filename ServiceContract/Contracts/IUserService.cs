@@ -10,8 +10,5 @@ namespace ServiceContract.Contracts
     public  interface IUserService
     {
         void AddUser(UserInfoInputDto addUserDto);
-        void UpdateUser(UpdateUserInfoDto updateUserDto);
-        public IEnumerable<GetUserInfoDto> ShowBySearch(string searchedWord);
-        void DeleteUser(int id);
     }
 }

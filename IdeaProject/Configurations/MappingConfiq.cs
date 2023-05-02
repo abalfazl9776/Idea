@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using DataAccess.Entities;
 using DataAccess.Repositories;
+using DataContract.Models.Comment;
 using DataContract.Models.Idea;
 using DataContract.Models.User;
+using IdeaProject.ViewModels.Comment;
 using IdeaProject.ViewModels.Idea;
 using IdeaProject.ViewModels.User;
+using ServiceContract.Models.Comment;
 using ServiceContract.Models.Idea;
 using ServiceContract.Models.User;
 
@@ -34,6 +37,14 @@ namespace IdeaProject.Configurations
             CreateMap<UserInfoInputVm, UserInfoInputDto>();
             CreateMap<UserInfoInputDto, AddUserDto>().ForMember(dest => dest.DateTime, opt => opt.MapFrom(x => DateTime.Now));
             CreateMap<AddUserDto, User>();
+
+            CreateMap<AddCommentVm, AddCommentDto>();
+            CreateMap<AddCommentDto, AddComment>();
+            CreateMap<AddComment, Comment>().ForMember(dest => dest.DateTime, opt => opt.MapFrom(x => DateTime.Now));
+
+            CreateMap<GetCommentDto, GetCommentVm >();
+            CreateMap<GetComments, GetCommentDto >();
+            CreateMap< Comment, GetComments> ().ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName));
         }
     }
 }

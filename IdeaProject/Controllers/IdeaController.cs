@@ -34,7 +34,6 @@ public class IdeaController : ControllerBase
             result.AddToModelState(this.ModelState);
         }
         var ideaInputDto = _mapper.Map<IdeaInputDto>(ideaInputVm);
-        ideaInputDto.UserId = 1;
         _ideaService.CreateIdea(ideaInputDto);
         return Ok();
     }

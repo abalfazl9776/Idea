@@ -25,20 +25,5 @@ namespace Service.Services
             var addUser = _mapper.Map<AddUserDto>(addUserDto);
             _userRepository.AddUser(addUser);
         }
-
-        public void DeleteUser(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<GetUserInfoDto> ShowBySearch(string searchedWord)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateUser(UpdateUserInfoDto updateUserDto)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

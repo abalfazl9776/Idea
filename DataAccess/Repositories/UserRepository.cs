@@ -25,20 +25,5 @@ namespace DataAccess.Repositories
             _applicationDbContext.User.Add(User);
             _applicationDbContext.SaveChanges();
         }
-
-        public void DeleteUser(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<GetUserDto> ShowBySearch(string searchedWord)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateUser(AddUserDto updateUserDto)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

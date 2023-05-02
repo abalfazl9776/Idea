@@ -18,6 +18,8 @@ builder.Services.AddAutoMapper(typeof(MappingConfiq));
 builder.Services.AddScoped<IIdeaService, IdeaService>();
 builder.Services.AddScoped<IIdeaRepository, IdeaRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
 builder.Services.AddScoped<IValidator<IdeaInputVm>, IdeaValidator>();

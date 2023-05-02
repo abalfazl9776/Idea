@@ -16,4 +16,6 @@ public class ApplicationDbContext : DbContext
     
     public DbSet<Idea> Idea { get; set; }
     public DbSet<User> User { get; set; }
+    public DbSet<Comment> Comment { get; set; }
+
 }
