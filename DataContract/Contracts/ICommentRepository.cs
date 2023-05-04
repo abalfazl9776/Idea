@@ -10,6 +10,6 @@ namespace DataContract.Contracts
     public interface ICommentRepository
     {
         void AddComment(AddComment addComment);
-        List<GetComments> ShowComments();
+        ICollection<GetComments> ShowComments(int page, int pageSize);
     }
 }

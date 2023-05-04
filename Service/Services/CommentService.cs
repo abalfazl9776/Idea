@@ -27,9 +27,9 @@ namespace Service.Services
             _commentRepository.AddComment(comment);
         }
 
-        public List<GetCommentDto> ShowComments()
+        public ICollection<GetCommentDto> ShowComments(int page, int pageSize)
         {
-            List<GetComments> comments = _commentRepository.ShowComments();
+            List<GetComments> comments = _commentRepository.ShowComments(page,pageSize).ToList();
             List<GetCommentDto> showCommends = _mapper.Map<List<GetCommentDto>>(comments);
             return showCommends;
 

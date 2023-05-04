@@ -10,6 +10,6 @@ namespace ServiceContract.Contracts
     public interface ICommentService
     {
         void AddComment(AddCommentDto addComment);
-        List<GetCommentDto> ShowComments();
+        ICollection<GetCommentDto> ShowComments(int page, int pageSize);
     }
 }

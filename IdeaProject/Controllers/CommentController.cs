@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DataContract.Contracts;
 using IdeaProject.ViewModels.Comment;
+using IdeaProject.ViewModels.Pagination;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceContract.Contracts;
@@ -29,11 +30,12 @@ namespace IdeaProject.Controllers
         }
 
         [HttpGet]
-        public ActionResult< List<GetCommentVm>> ShowComments()
+        public ActionResult< ICollection<GetCommentVm>> ShowComments(int page = 1)
         {
-            List<GetCommentDto>comments = _commentService.ShowComments();
+            List<GetCommentDto>comments = _commentService.ShowComments(page,2).ToList();
             List<GetCommentVm> showComments = _mapper.Map<List<GetCommentVm>>(comments);
             return Ok(showComments);
         }
+
     }
 }

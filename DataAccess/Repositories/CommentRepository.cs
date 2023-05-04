@@ -29,12 +29,19 @@ namespace DataAccess.Repositories
             _applicationDbContext.SaveChanges();
         }
 
-        public List<GetComments> ShowComments()
+        public ICollection<GetComments> ShowComments(int page, int pageSize)
         {
-            List<Comment> comments =_applicationDbContext.Comment.Include(a=>a.User).ToList();
+            if(page <=1 ) 
+            {
+                page = 0;
+            }
+            int totalNumber = page * pageSize;
+            List<Comment> comments =_applicationDbContext.Comment.Include(a=>a.User).OrderBy(x=>x.DateTime).Skip(totalNumber).Take(pageSize).ToList();
             List<GetComments> showComments = _mapper.Map<List<GetComments>>(comments);
             return showComments ;
         }
+
+        
         
     }
 }
