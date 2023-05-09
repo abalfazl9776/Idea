@@ -27,12 +27,19 @@ namespace Service.Services
             _commentRepository.AddComment(comment);
         }
 
-        public ICollection<GetCommentDto> ShowComments(int page, int pageSize)
+        public ICollection<GetCommentDto> ShowComments(int page, int pageSize,int ideaId)
         {
-            List<GetComments> comments = _commentRepository.ShowComments(page,pageSize).ToList();
+            List<GetComments> comments = _commentRepository.ShowComments(page,pageSize,ideaId).ToList();
             List<GetCommentDto> showCommends = _mapper.Map<List<GetCommentDto>>(comments);
             return showCommends;
 
+        }
+
+        public List<GetCommentDto> ShowCommentsFromSql(int page, int ideaId)
+        {
+            List<GetComments> comments = _commentRepository.ShowCommentsFromSql(page,ideaId);
+            List<GetCommentDto> showComments = _mapper.Map<List<GetCommentDto>>(comments);
+            return showComments;
         }
     }
 }

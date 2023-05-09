@@ -45,6 +45,10 @@ namespace IdeaProject.Configurations
             CreateMap<GetCommentDto, GetCommentVm >();
             CreateMap<GetComments, GetCommentDto >();
             CreateMap< Comment, GetComments> ().ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName));
+
+            CreateMap<CommentsOnIdeas, GetComments>();
+            CreateMap<GetComments, GetCommentDto>();
+            CreateMap<GetCommentDto, GetCommentVm>();
         }
     }
 }

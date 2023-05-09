@@ -29,13 +29,20 @@ namespace IdeaProject.Controllers
             return Ok(addCommentDto);
         }
 
-        [HttpGet]
-        public ActionResult< ICollection<GetCommentVm>> ShowComments(int page = 1)
+        [HttpGet("ideaId : int")]
+        public ActionResult< ICollection<GetCommentVm>> ShowComments(int ideaId,int page = 1)
         {
-            List<GetCommentDto>comments = _commentService.ShowComments(page,2).ToList();
+            List<GetCommentDto>comments = _commentService.ShowComments(page,2,ideaId).ToList();
             List<GetCommentVm> showComments = _mapper.Map<List<GetCommentVm>>(comments);
             return Ok(showComments);
         }
 
+        [HttpGet("FromSql")]
+        public List<GetCommentVm> ShowCommentsFromSql(int page, int ideaId)
+        {
+            List<GetCommentDto> comments = _commentService.ShowCommentsFromSql(page, ideaId);
+            List<GetCommentVm> showComments = _mapper.Map<List<GetCommentVm>>(comments);
+            return showComments;
+        }
     }
 }
